@@ -1,10 +1,5 @@
 <!--
-    Ability to create an Employee Payroll System UI 
-    - Create an Employee Payroll Form as a webpage using HTML, CSS 
-    - Add a header element on top of the UI having text as ‘Employee Payroll’
-    - Create a center align box using div tag 
-    - Add a header element on top of box having text as ‘Employee Payroll Form’ UC 1
-    - Use flex and CSS properties
+    Ability to create a Form Header and the Input Text Element for Name
 -->
 
 <!DOCTYPE html>
@@ -26,5 +21,16 @@
                 </div>
             </div>
         </header>
+        <div class="form-content">
+            <form class="form" action="#" onsubmit="save();return false">
+                <div class="form-head">
+                    Employee Payroll Form
+                </div>
+                <div class="row-content">
+                    <label class="label text" for="name">Name</label>
+                    <input class="input" type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
