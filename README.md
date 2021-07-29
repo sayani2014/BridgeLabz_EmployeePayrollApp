@@ -11,3 +11,10 @@
 8. Ability to Set Event  Listener on Salary Range to display appropriate value.
 9. On Form Submit populate the Employee Payroll Data Object.
 10. Perform Validation Employee Payroll Data setter methods.
+11. Modify Employee Payroll Class with new Attributes and Getters and Setters.
+12. Ability to set Event Listeners when Document is loaded so as to
+    - Set Event Listener on Salary Range to display appropriate value.
+    - Validation of Name and Date.
+13. Ability to create Employee Payroll Object On Save.
+14. Ability to save the Employee Payroll Object to Local Storage.
+15. Ability to reset the form on clicking reset.
