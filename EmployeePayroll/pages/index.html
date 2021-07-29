@@ -1,5 +1,7 @@
 <!--
-    Using the UX design set the button style appropriately
+    Modify Employee Payroll Class with new Attributes and Getters and Setters
+        - New Attributes added are Department, Gender, Employee Notes, Profile Pic, etc
+        – Getters and Setters are used for all properties and Constructor is made default
 -->
 
 <!DOCTYPE html>
@@ -23,31 +25,32 @@
         </header>
         <br>
         <div class="form-content">
-            <form class="form" action="#" onsubmit="save();return false">
+            <form class="form" action="#" onreset="resetForm()" onsubmit="save()">
                 <div class="form-head">
                     Employee Payroll Form
                 </div>
                 <div class="row-content">
                     <label class="label text" for="name">Name</label>
                     <input class="input" type="text" id="name" name="name" placeholder="Your name" required>
+                    <error-output class="text-error" for="text"></error-output>
                 </div>
                 <div class="row-content">
                     <label class="label text" for="profile">Profile Image</label>
                     <div class="profile-radio-content">
                         <label>
-                            <input type="radio" id="profile1" name="profile" value="../assets/profile-images/Ellipse -3.png" required>
+                            <input type="radio" id="profile1" name="profile" value="../assets/profile-images/Ellipse -3.png">
                             <img class="profile" id="image1" src="../assets/profile-images/Ellipse -3.png">
                         </label>
                         <label>
-                            <input type="radio" id="profile2" name="profile" value="../assets/profile-images/Ellipse 1.png" required>
+                            <input type="radio" id="profile2" name="profile" value="../assets/profile-images/Ellipse 1.png">
                             <img class="profile" id="image2" src="../assets/profile-images/Ellipse 1.png">
                         </label>
                         <label>
-                            <input type="radio" id="profile3" name="profile" value="../assets/profile-images/Ellipse -8.png" required>
+                            <input type="radio" id="profile3" name="profile" value="../assets/profile-images/Ellipse -8.png">
                             <img class="profile" id="image3" src="../assets/profile-images/Ellipse -8.png">
                         </label>
                         <label>
-                            <input type="radio" id="profile4" name="profile" value="../assets/profile-images/Ellipse -7.png" required>
+                            <input type="radio" id="profile4" name="profile" value="../assets/profile-images/Ellipse -7.png">
                             <img class="profile" id="image4" src="../assets/profile-images/Ellipse -7.png">
                         </label>
                     </div>
@@ -78,7 +81,7 @@
                 </div>
                 <div class="row-content">
                     <label class="label text" for="salary">Choose Your Salary</label>
-                    <input class="input" type="range" name="salary" id="salary" min="300000" max="5000000" step="100" value="4000000">
+                    <input class="input" type="range" name="salary" id="salary" min="300000" max="5000000" step="100" value="4000000" required>
                     <output class="salary-output" for="salary">4000000</output>
                 </div>
                 <div class="row-content">
@@ -150,7 +153,7 @@
                 <div class="buttonParent">
                     <a href="./index.html" class="resetButton button cancelButton">Cancel</a>
                     <div class="submit-reset">
-                        <button type="submit" class="button submitButton" id="submitButton">Submit</button>
+                        <button type="submit" class="button submitButton" id="submitButton" onclick="submitButton()">Submit</button>
                         <button type="reset" class="resetButton button" id="resetButton">Reset</button>
                     </div>
                 </div> 
