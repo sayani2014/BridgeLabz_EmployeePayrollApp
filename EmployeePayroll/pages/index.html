@@ -1,5 +1,5 @@
 <!--
-   Ability to save the Employee Payroll Object to Local Storage.
+   Ability to reset the form on clicking reset
 -->
 
 <!DOCTYPE html>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="row-content">
                     <label class="label text" for="startDate">Start Date</label>
-                    <div>
+                    <div id="date">
                         <select id="day" name="Day">
                             <option value="Day">Day</option>
                             <option value='01'>01</option>
@@ -146,6 +146,7 @@
                             <option value='2016'>2016</option>
                         </select>
                     </div>
+                    <error-output class="date-error" for="text"></error-output>
                 </div>  
                 <div class="row-content">
                     <label class="label text" for="notes">Notes</label>
