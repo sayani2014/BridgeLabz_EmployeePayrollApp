@@ -1,5 +1,5 @@
 <!--
-   Ability to reset the form on clicking reset
+    Ability to create an Employee Payroll Form UI 
 -->
 
 <!DOCTYPE html>
@@ -10,10 +10,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/style.css">
         <title>Employee payroll form</title>
+        <!--UC 8-->
         <script src="../js/validate.js"></script>
+        <!--UC 9-->
         <script src="../js/EmployeePayrollData.js"></script>
     </head>
     <body>
+        <!--Uc 1-->
         <header class="header-content header">
             <div class="logo-content">
                 <img src="../assets/images/logo.png" alt="">
@@ -25,6 +28,7 @@
         </header>
         <br>
         <div class="form-content">
+            <!--UC 2-->
             <form class="form" action="#" onreset="resetForm()" onsubmit="save()">
                 <div class="form-head">
                     Employee Payroll Form
@@ -32,8 +36,10 @@
                 <div class="row-content">
                     <label class="label text" for="name">Name</label>
                     <input class="input" type="text" id="name" name="name" placeholder="Your name" required>
+                    <!--UC 10-->
                     <error-output class="text-error" for="text"></error-output>
                 </div>
+                <!--UC 3-->
                 <div class="row-content">
                     <label class="label text" for="profile">Profile Image</label>
                     <div class="profile-radio-content">
@@ -55,6 +61,7 @@
                         </label>
                     </div>
                 </div>
+                <!--UC 4-->
                 <div class="row-content">
                     <label class="label text" for="gender">Gender</label>
                     <div>
@@ -84,6 +91,7 @@
                     <input class="input" type="range" name="salary" id="salary" min="300000" max="5000000" step="100" value="4000000" required>
                     <output class="salary-output" for="salary">4000000</output>
                 </div>
+                <!--UC 5-->
                 <div class="row-content">
                     <label class="label text" for="startDate">Start Date</label>
                     <div id="date">
@@ -146,8 +154,10 @@
                             <option value='2016'>2016</option>
                         </select>
                     </div>
+                    <!--UC 10-->
                     <error-output class="date-error" for="text"></error-output>
                 </div>  
+                <!--UC 6-->
                 <div class="row-content">
                     <label class="label text" for="notes">Notes</label>
                     <textarea id="notes" class="input" name="Notes" style="height:100px;"></textarea>
