@@ -72,9 +72,9 @@ class PersonInfo {
         if ( start_date > now ) {
             throw 'Start Date is Future date!';
         } 
-        // var diff = Math.abs(now.getTime() - start_date.getTime());
-        // if ( diff / (1000 * 60 * 60 * 24) > 30)
-        //     throw "Start Date is beyond 30 days";
+        var diff = Math.abs(now.getTime() - start_date.getTime());
+        if ( diff / (1000 * 60 * 60 * 24) > 30)
+            throw "Start Date is beyond 30 days";
         this._start_date = start_date;  
     }
 
