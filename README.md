@@ -16,3 +16,10 @@
 11. Ability to create Employee Payroll Object On Save.
 12. Ability to save the Employee Payroll Object to Local Storage.
 13. Ability to reset the form on clicking reset.
+14. Ability to create an Employee Payroll System Home Page UI.
+15. Ability to create a Header Section with Employee Details and Add Employee button.
+16. Ability to view Employee Payroll details in a Tabular Format.
+17. Ability to view Employee Payroll details in a Tabular Format from JS File using Template Literals. 
+    - Use Template literal ES6 feature.
+18. Ability to view Employee Payroll details in a Tabular Format from JSON Object.
+19. Ability to view Employee Payroll details from Local Storage.
