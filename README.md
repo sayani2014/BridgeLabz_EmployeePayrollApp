@@ -23,3 +23,6 @@
     - Use Template literal ES6 feature.
 18. Ability to view Employee Payroll details in a Tabular Format from JSON Object.
 19. Ability to view Employee Payroll details from Local Storage.
+20. Ability to Remove an Employee from the Payroll details.
+21. Ability to Update an Employee Payroll details.
+22. Ability to Save Updated Employee Payroll into Local Storage.
