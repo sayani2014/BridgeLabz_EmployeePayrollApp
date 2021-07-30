@@ -1,12 +1,10 @@
 <!--
-    Ability to view Employee Payroll details from Local Storage.
-        - Retrieve Employee Payroll Data from Local Storage and assign  to variable that has a scope across js file 
-          and display the number in the Header Text.
-        - Note the element with name attribute is changed to id as name is deprecated.
-        - Note: all attributes of Employee Payroll data starts with underscore (i.e. _).
-        - This is because Employee Payroll Class when uses getters and setters for its attributes, since the getters and setters are using
-          proper attribute name, the class properties are automatically created with underscore.
-        - Hence when JSON.stringify is called on the Employee Payroll Object, the JSON Attributes starts with underscore.
+    Ability to Remove an Employee from the Payroll details.
+        - Firstly find the employee to remove using Array find method.
+        - Get the Index of the Array, using Map and indexOf methods.
+        - Use Array Splice Method to remove the Employee from the List.
+        - Update the Local Storage with the new List.
+        - Refresh the innerHTML of the Employee Display.
 -->
 
 <!DOCTYPE html>

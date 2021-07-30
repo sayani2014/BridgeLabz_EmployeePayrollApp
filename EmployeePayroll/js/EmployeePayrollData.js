@@ -3,7 +3,15 @@ class PersonInfo {
      * setter and getter methods
      * validating the user inputs using regular expression
      */
-    
+
+    get id() {
+        return this._id;
+    }
+
+    set id( id ) {
+        this._id = id;
+    }
+
     get name() {
         return this._name;
     }
@@ -61,19 +69,20 @@ class PersonInfo {
 
     set start_date ( start_date ) {
         let now = new Date();
-        now = Date.parse(now);
         if ( start_date > now ) {
             throw 'Start Date is Future date!';
-        } else {
-            this._start_date = start_date;
-        }
+        } 
+        // var diff = Math.abs(now.getTime() - start_date.getTime());
+        // if ( diff / (1000 * 60 * 60 * 24) > 30)
+        //     throw "Start Date is beyond 30 days";
+        this._start_date = start_date;  
     }
 
     toString() {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const empDate = !this.start_date ? "undefined" :
                         this.start_date.toLocaleDateString("en-US", options);
-        return 'Name = ' + this.name + ", Gender = " + this.gender + ", ProfilePic = " +this.profilePic
+        return 'ID = ' + this.id + 'Name = ' + this.name + ", Gender = " + this.gender + ", ProfilePic = " +this.profilePic
                     + ", Department = " + this.department + ", Salary = " + this.salary +
                         ", StartDate = " + empDate + ", Note = " +this.note;
     }
