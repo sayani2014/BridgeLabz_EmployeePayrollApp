@@ -85,7 +85,7 @@ const getInputValueById = ( id ) => {
 //UC 12
 
 function createAndUpdateStorage(employeePayrollData) {
-   localStorage.clear();
+  // localStorage.clear();
    let employeePayrollList = JSON.parse( localStorage.getItem ("EmployeePayrollList"));
    if(employeePayrollList != undefined) {
       employeePayrollList.push(employeePayrollData);
