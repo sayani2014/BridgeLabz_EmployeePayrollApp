@@ -1,3 +1,12 @@
+/**
+ * Convert Employee Payroll App to Client Server Architecture.
+    Stage 1: Since JSON Server becomes a Server, hence Employee Payroll Class and generation
+             of Employee Payroll Id becomes Server Responsibility.
+    
+    @author : SAYANI KOLEY
+    @since : 04.08.2021
+ */
+
 let empPayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
     empPayrollList = getEmployeePayrollDataFromStorage();
@@ -17,7 +26,6 @@ const createInnerHtml = () => {
                     "<th>Department</th><th>Salary</th><th>Start Date</th>" +
                     "<th>Actions</th>";
     let innerHtml = `${headerHtml}`;
-    //let empPayrollList = createEmployeePayrollJSON();  
     for ( const empPayrollData of empPayrollList ) {
         innerHtml = `${innerHtml}
         <tr>
@@ -32,9 +40,9 @@ const createInnerHtml = () => {
             <td>${empPayrollData._salary}</td>
             <td>${stringifyDate(empPayrollData._start_date)}</td>
             <td>
-                <img id="${empPayrollData._id}" onclick="remove(this)" 
+                <img id="${empPayrollData.id}" onclick="remove(this)" 
                             src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                <img id="${empPayrollData._id}" onclick="update(this)" 
+                <img id="${empPayrollData.id}" onclick="update(this)" 
                             src="../assets/icons/create-black-18dp.svg" alt="edit">           
             </td>
         </tr>
@@ -51,40 +59,12 @@ const getDeptHtml = (deptList) => {
     return deptHtml;
 }
 
-const createEmployeePayrollJSON = () => {
-    let empPayrollListLocal = [
-        {
-            _name: 'Sayani Koley',
-            _gender: 'Female',
-            _department: [
-                'Engineering', 'HR'
-            ],
-            _salary: '250000',
-            _start_date: '01 Nov 2020',
-            _note: '',
-            _profilePic: '../assets/profile-images/Ellipse 1.png'
-        },
-        {
-            _name: 'Suvadeep Das',
-            _gender: 'Male',
-            _department: [
-                'Engineering', 'Finance'
-            ],
-            _salary: '500000',
-            _start_date: '29 Oct 2019',
-            _note: '',
-            _profilePic: '../assets/profile-images/Ellipse -3.png'
-        }
-    ]
-    return empPayrollListLocal;
-}
-
 const remove = (node) => {
-    let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
+    let empPayrollData = empPayrollList.find(empData => empData.id == node.id);
     if( !empPayrollData ) return;
     const index = empPayrollList
-                    .map( empData => empData._id )
-                    .indexOf(empPayrollData._id);
+                    .map( empData => empData.id )
+                    .indexOf(empPayrollData.id);
     empPayrollList.splice(index, 1);
     localStorage.setItem("EmployeePyrollList", JSON.stringify(empPayrollList));
     document.querySelector(".emp-count").textContent = empPayrollList.length;
@@ -92,7 +72,7 @@ const remove = (node) => {
 }
 
 const update = (node) => {
-    let empPayrollData = empPayrollList.find((empData) => empData._id == node.id);
+    let empPayrollData = empPayrollList.find((empData) => empData.id == node.id);
     if (!empPayrollData) return;
     localStorage.setItem("editEmp", JSON.stringify(empPayrollData));
     window.location.replace(site_properties.add_emp_payroll_page);

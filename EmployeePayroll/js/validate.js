@@ -3,27 +3,26 @@ let employeePayrollObj = {};
 
 window.addEventListener('DOMContentLoaded', (event) => {
    const name = document.querySelector('#name');
-   const textError = document.querySelector('.text-error');
    name.addEventListener('input', function() {
       if ( name.value.length == 0) {
-         textError.textContent = "";
+         setTextValue('.text-error',"");
          return;
       }
       try {
-         (new PersonInfo()).name = name.value;
-         textError.textContent = "";
+         checkName(name.value);
+         setTextValue('.text-error',"");
       } catch (e) {
-         textError.textContent = e;
+         setTextValue('.text-error', e);
       }
    });
 
    const date = document.querySelector('#date');
    date.addEventListener('input', function() {
-      const startDate = new Date(Date.parse(getInputValueById('#day') + " " +
-                                                   getInputValueById('#month') + " " +
-                                                   getInputValueById('#year')));
+      const startDate = getInputValueById('#day') + " " +
+                              getInputValueById('#month') + " " +
+                                    getInputValueById('#year');
       try {
-         (new PersonInfo()).start_date = startDate;
+         checkStartDate(new Date(Date.parse(startDate)));
          setTextValue('.date-error', "");
       } catch (e) {
          setTextValue('.date-error', e);
@@ -31,10 +30,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
    });
 
    const salary = document.querySelector('#salary');
-   const output = document.querySelector('.salary-output');
-   output.textContent = salary.value;
+   setTextValue('.salary-output', salary.value);
    salary.addEventListener('input', function() {
-      output.textContent = salary.value;
+      setTextValue('.salary-output', salary.value);
    });
 
    checkForUpdate();
@@ -54,6 +52,7 @@ const save = (event) => {
 };
 
 const setEmployeePayrollObject = () => {
+   if(!isUpdate) employeePayrollObj.id = createNewEmployeeId();
    employeePayrollObj._name = getInputValueById('#name');
    employeePayrollObj._profilePic = getSelectedValues('[name=profile]').pop();
    employeePayrollObj._gender = getSelectedValues('[name=gender]').pop();
@@ -85,18 +84,17 @@ const createAndUpdateStorage = () => {
    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
    if(employeePayrollList) {
       let empPayrollData = employeePayrollList
-                                 .find(empData => empData._id == employeePayrollObj._id);
+                                 .find(empData => empData.id == employeePayrollObj.id);
       if (!empPayrollData) {
-         employeePayrollList.push(createEmployeePayrollData());
+         employeePayrollList.push(employeePayrollObj);
       } else {
          const index = employeePayrollList
-                        .map( empData => empData._id)
-                        .indexOf(employeePayrollData._id);
-         employeePayrollList.splice(index, 1, 
-                                 createEmployeePayrollData(empPayrollData._id));
+                        .map( empData => empData.id)
+                        .indexOf(employeePayrollData.id);
+         employeePayrollList.splice(index, 1, employeePayrollObj);
       }
    } else {
-      employeePayrollList = [createEmployeePayrollData()];
+      employeePayrollList = [employeePayrollObj];
    }
    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
 }
@@ -139,14 +137,14 @@ const createNewEmployeeId = () => {
    return empID;
 }
 
-const getSelectedValues = (propertyValue) => {
-   let allItems = document.querySelectorAll(propertyValue);
-   let selItems = [];
-   allItems.forEach(item => {
-      if(item.checked) selItems.push(item.value);
-   });
-   return selItems;
-}
+// const getSelectedValues = (propertyValue) => {
+//    let allItems = document.querySelectorAll(propertyValue);
+//    let selItems = [];
+//    allItems.forEach(item => {
+//       if(item.checked) selItems.push(item.value);
+//    });
+//    return selItems;
+// }
 
 const resetForm = () => {
    setValue('#name','');
