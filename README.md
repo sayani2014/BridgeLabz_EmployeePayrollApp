@@ -26,3 +26,10 @@
 20. Ability to Remove an Employee from the Payroll details.
 21. Ability to Update an Employee Payroll details.
 22. Ability to Save Updated Employee Payroll into Local Storage.
+23. Create a simple html file to test the REST services with JSON Server using Promise for Employee Payroll Service.
+Convert Employee Payroll App to Client Server Architecture.
+24. Stage 1: Since JSON Server becomes a Server, hence Employee Payroll Class and generation of Employee Payroll Id becomes Server Responsibility.
+25. Stage 2: Retrieve the Employee Payroll data from the JSON Server instead of Local Storage.
+26. Stage 3: Ability to Add Employee Payroll. 
+    Stage 4: Ability to update Employee Payroll Service.
+27. Stage 4: Ability to remove Employee from Payroll Service.
