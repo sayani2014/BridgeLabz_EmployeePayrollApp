@@ -1,8 +1,7 @@
 /**
  * Convert Employee Payroll App to Client Server Architecture.
-    Stage 2: Retrieve the Employee  Payroll data from the JSON Server instead of Local Storage.
-        - Ability to support both Local Storage as well as JSON Server.
-        - If Server Call then create a method to retrieve Employee Payroll from Server.
+    Stage 3: Ability to Add Employee Payroll.
+    Stage 4: Ability to update Employee Payroll Service.
     
     @author : SAYANI KOLEY
     @since : 04.08.2021
