@@ -1,7 +1,8 @@
 /**
  * Convert Employee Payroll App to Client Server Architecture.
-    Stage 1: Since JSON Server becomes a Server, hence Employee Payroll Class and generation
-             of Employee Payroll Id becomes Server Responsibility.
+    Stage 2: Retrieve the Employee  Payroll data from the JSON Server instead of Local Storage.
+        - Ability to support both Local Storage as well as JSON Server.
+        - If Server Call then create a method to retrieve Employee Payroll from Server.
     
     @author : SAYANI KOLEY
     @since : 04.08.2021
@@ -9,15 +10,34 @@
 
 let empPayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
-    empPayrollList = getEmployeePayrollDataFromStorage();
-    document.querySelector(".emp-count").textContent = empPayrollList.length;
-    createInnerHtml();
-    localStorage.removeItem('editEmp');
+    if ( site_properties.use_local_storrage.match("true") ) {
+        getEmployeePayrollDataFromStorage();
+    } else getEmployeePayrollDataFromServer();
 });
 
 const getEmployeePayrollDataFromStorage = () => {
-    return localStorage.getItem('EmployeePayrollList') ?
-                JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+    empPayrollList = localStorage.getItem('EmployeePayrollList') ?
+                    JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+    processEmployeePayrollDataResponse();
+}
+
+const processEmployeePayrollDataResponse = () => {
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
+    createInnerHtml();
+    localStorage.removeItem('editEmp');
+}
+
+const getEmployeePayrollDataFromServer = () => {
+    makeServiceCall("GET", site_properties.server_url, true)
+        .then(responseText => {
+            empPayrollList = JSON.parse(responseText);
+            processEmployeePayrollDataResponse();
+        })
+        .catch(error => {
+            console.log("GET Error Status: "+JSON.stringify(error));
+            empPayrollList = [];
+            processEmployeePayrollDataResponse();
+        });
 }
 
 const createInnerHtml = () => {
