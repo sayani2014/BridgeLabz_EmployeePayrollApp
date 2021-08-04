@@ -32,4 +32,4 @@ Convert Employee Payroll App to Client Server Architecture.
 25. Stage 2: Retrieve the Employee Payroll data from the JSON Server instead of Local Storage.
 26. Stage 3: Ability to Add Employee Payroll. 
     Stage 4: Ability to update Employee Payroll Service.
-27. Stage 4: Ability to remove Employee from Payroll Service.
+27. Stage 5: Ability to remove Employee from Payroll Service.
