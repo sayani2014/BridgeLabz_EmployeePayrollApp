@@ -1,7 +1,6 @@
 /**
  * Convert Employee Payroll App to Client Server Architecture.
-    Stage 3: Ability to Add Employee Payroll.
-    Stage 4: Ability to update Employee Payroll Service.
+    Stage 5: Ability to remove Employee from Payroll Service.
     
     @author : SAYANI KOLEY
     @since : 04.08.2021
@@ -85,9 +84,19 @@ const remove = (node) => {
                     .map( empData => empData.id )
                     .indexOf(empPayrollData.id);
     empPayrollList.splice(index, 1);
-    localStorage.setItem("EmployeePyrollList", JSON.stringify(empPayrollList));
-    document.querySelector(".emp-count").textContent = empPayrollList.length;
-    createInnerHtml();
+    if ( site_properties.use_local_storrage.match("true") ) {
+        localStorage.setItem("EmployeePyrollList", JSON.stringify(empPayrollList));
+        createInnerHtml();
+     } else {
+        const deleteURL = site_properties.server_url + empPayrollData.id.toString();
+        makeServiceCall("DELETE", deleteURL, false)
+            .then(responseText => {
+                createInnerHtml();
+        })
+        .catch(error => {
+            console.log("DELETE Error Status: "+JSON.stringify(error));
+      });
+    }
 }
 
 const update = (node) => {
